@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import SearchComponent from '../components/searchComponent/searchComponent'
+import SearchComponent from '../components/cardComponent/cardComponent'
+import ResultContainer from '../containers/resultContainer/resultContainer'
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
         
       </Head>
       Wiki Rick and Morty
-      <SearchComponent />
+      <ResultContainer />
     </div>
   )
 }

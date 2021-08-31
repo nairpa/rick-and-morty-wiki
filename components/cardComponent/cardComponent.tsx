@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_CHARACTERS } from "../../apollo/queries/characters";
-import { Button, Container, Image, ImageContainer, NameText, SpeciesText } from "./searchStyles";
+import { Button, Container, Image, ImageContainer, NameText, SpeciesText } from "./cardStyles";
 
 interface CharData {
     id: number,
@@ -10,16 +10,10 @@ interface CharData {
     species: string,
 }
 
-const SearchComponent = ():JSX.Element => {
-    const { loading, error, data } = useQuery(GET_CHARACTERS(1, `characters`))
-    console.log(data)
-
-    const charData = data? data.characters.results : null   
-
-    console.log(charData)
+const CardComponent = ({charData}):JSX.Element => {
     return (
         <> 
-            {loading ? <div>Loading</div> : <div>{charData.map((el: CharData) => { 
+            {charData.map((el: CharData) => { 
                 return (
                     <Container key={el.id}>
                         <ImageContainer>
@@ -30,10 +24,9 @@ const SearchComponent = ():JSX.Element => {
                         <Button>Ver detalle</Button>
                     </Container>
                 )
-            })
-            }</div> }  
-        </>
+            })}
+        </>   
     )
 }
 
-export default SearchComponent
+export default CardComponent
