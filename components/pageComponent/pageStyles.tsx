@@ -20,9 +20,8 @@ export const PageIndexContainer = styled.li`
     color: #168b44;
     transition: 0.3s all ease-in-out;
     :hover {
-        color: #c8dd5d;
-        background: #168b44;
-        border: 1px solid #0e3236;
+        background: #FFFFFF;
+        border: 1px solid #168b44;
     }
 `
 

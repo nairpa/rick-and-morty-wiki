@@ -1,6 +1,5 @@
 import { ApolloClient, ApolloLink, InMemoryCache } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context'
-import { addTypenameToDocument } from "@apollo/client/utilities";
 import { createUploadLink } from 'apollo-upload-client'
 
 const authLink = setContext(async (_req, { headers }) => {

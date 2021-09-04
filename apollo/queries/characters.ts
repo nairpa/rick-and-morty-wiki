@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client'
 
-export const GET_CHARACTERS = (page: number = 1, typename: string) => {
+export const GET_CHARACTERS = (page: number = 1, typename: string, filter?: string)  => {
     return gql`
     query {
-        ${typename}(page:${page}) {
+        ${typename}(page:${page}, filter: {name: "${filter? filter: " "}"}) {
             info {
                 pages,
                 next,

@@ -4,15 +4,10 @@ import { GET_CHARACTERS } from "../../apollo/queries/characters";
 import CardComponent from '../../components/cardComponent/cardComponent'
 import { CardContainer } from './resultStyles'
 import PageComponent from "../../components/pageComponent/pageComponent";
+import { Pages } from '../../models/pages'
+import NavbarComponent from "../../components/navbarComponet/navbarComponent";
 
-interface Pages {
-    currentPage: number,
-    nextPage: number,
-    prevPage: number,
-    totalPage: number
-}
-
-const ResultContainer = ():JSX.Element => {
+const ResultContainer:React.FC = ():JSX.Element => {
     const [pagination, setPagination] = React.useState<Pages>({
         currentPage: 0,
         nextPage: 0,
@@ -29,13 +24,14 @@ const ResultContainer = ():JSX.Element => {
         }
     }, [data])
 
-    const handleClick = (cPage:number, nPage:number, pPage:number) => {
+    const handleClick = (cPage:number, nPage:number, pPage:number): void => {
         console.log(cPage, nPage, pPage)
         setPagination({...pagination, currentPage: cPage, nextPage: nPage, prevPage: pPage })
     }
 
     return (
         <>
+            <NavbarComponent />
             {loading ? <div>Loading</div> : 
             <CardContainer>
                 <CardComponent charData={charData}/>
