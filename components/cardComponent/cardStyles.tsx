@@ -76,4 +76,5 @@ export const IconContainer = styled.div`
     justify-self: flex-end;
     font-size: 20px;
     color: red;
+    cursor: pointer;
 `

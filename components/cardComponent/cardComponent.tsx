@@ -3,27 +3,34 @@ import { Button, Container, Image, ImageContainer, NameText, SpeciesText, TextCo
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import * as fillHeart from '@fortawesome/free-solid-svg-icons'
-import  { Character }  from '../../models/characters'
+import  { Characters }  from '../../models/characters'
+import Router from 'next/router'
+import { SearchContext } from "../../context/searchContext";
 
-const CardComponent:React.FC<{charData: Character[]}> = ({charData}):JSX.Element => {
-    let favorite = false;
+const CardComponent:React.FC<{charData: Characters[]}> = ({charData}):JSX.Element => {
+    const { handleFav, listFav } = React.useContext(SearchContext)
+
+    const handleDetail = (id: number) => {
+        Router.push('/' + id)
+    }
 
     return (
         <> 
-            {charData.map((el: Character):JSX.Element => { 
+            {charData.map((el: Characters):JSX.Element => { 
+                const { name, id, image, species } = el
                 return (
-                    <Container key={el.id}>
+                    <Container key={id}>
                         <ImageContainer>
-                            <Image src={el.image} alt={el.name} />
+                            <Image src={image} alt={name} />
                         </ImageContainer>
                         <TextContainer >
-                            <NameText>{el.name}</NameText>
-                            <SpeciesText>{el.species}</SpeciesText>
+                            <NameText>{name}</NameText>
+                            <SpeciesText>{species}</SpeciesText>
                             <IconContainer>
-                                <FontAwesomeIcon icon={favorite ? fillHeart.faHeart : faHeart}/>
+                                <FontAwesomeIcon onClick={() => handleFav(id)} icon={listFav.includes(el) ? fillHeart.faHeart : faHeart}/>
                             </IconContainer>
                         </TextContainer>
-                        <Button>Ver detalle</Button>
+                        <Button onClick={() => handleDetail(id)}>Ver detalle</Button>
                     </Container>
                 )
             })}

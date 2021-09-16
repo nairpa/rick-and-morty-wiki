@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import ResultContainer from '../containers/resultContainer/resultContainer'
 
-export default function Home() {
+export default function Home(props) {
   return (
     <div>
       <Head>

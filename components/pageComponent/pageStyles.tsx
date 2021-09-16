@@ -5,7 +5,7 @@ export const PageContainer = styled.ul`
     flex-direction: row;
     flex-wrap: wrap;
     list-style: none;
-    justify-content: space-around;
+    justify-content: center;
     padding: 1em;
     bottom: 0;
 `

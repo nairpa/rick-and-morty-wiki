@@ -6,6 +6,7 @@ import { CardContainer } from './resultStyles'
 import PageComponent from "../../components/pageComponent/pageComponent";
 import { Pages } from '../../models/pages'
 import NavbarComponent from "../../components/navbarComponet/navbarComponent";
+import { SearchContext } from "../../context/searchContext";
 
 const ResultContainer:React.FC = ():JSX.Element => {
     const [pagination, setPagination] = React.useState<Pages>({
@@ -14,7 +15,9 @@ const ResultContainer:React.FC = ():JSX.Element => {
         prevPage: 0,
         totalPage: 0
     })
-    const { loading, error, data } = useQuery(GET_CHARACTERS(pagination.currentPage, `characters`))
+
+    const { search } = React.useContext(SearchContext)
+    const { loading, error, data } = useQuery(GET_CHARACTERS(pagination.currentPage, `characters`, search))
     const charData = data? data.characters.results : null
     console.log(charData)
     React.useEffect(() => {
