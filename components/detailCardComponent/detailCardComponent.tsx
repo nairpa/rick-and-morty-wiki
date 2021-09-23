@@ -3,11 +3,13 @@ import { Nav, Image, Name, ImageContainer, Button, Container, TextContainer, Tex
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as fillHeart from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { useContext, useEffect } from 'react'
-import { SearchContext } from '../../context/searchContext'
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks'
+import { selectCharacterState, toggleFav } from '../../redux/reducers'
 
 export const DetailCardComponent:React.FC<{data : Character}> = ({data}):JSX.Element => {
-    const { handleFav, listFav } = useContext(SearchContext)
+    const { name, id, image, species } = data
+    const dispatch = useAppDispatch()
+    const charState = useAppSelector(selectCharacterState)
     
     return (
         <>
@@ -15,10 +17,12 @@ export const DetailCardComponent:React.FC<{data : Character}> = ({data}):JSX.Ele
             <>
             <Nav>
                 <Container>
-                    <Name>{data.name}</Name>
-                    <IconContainer>
-                            <FontAwesomeIcon onClick={() => handleFav(data.id)} icon={listFav.map(el =>  el.id.includes(data.id)) ? fillHeart.faHeart : faHeart}/>
-                    </IconContainer>
+                    <div>
+                        <Name>{data.name}</Name>
+                        <IconContainer>
+                            <FontAwesomeIcon onClick={() => dispatch(toggleFav({name, id, image, species}))} icon={charState.favChar.filter(el => el.id === data.id).length ? fillHeart.faHeart : faHeart}/>
+                        </IconContainer>
+                    </div>
                     <Button onClick={() => window.history.back()}>Volver</Button>
                 </Container>
                 <ImageContainer>

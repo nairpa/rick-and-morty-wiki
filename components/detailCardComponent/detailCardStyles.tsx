@@ -53,6 +53,11 @@ export const Container = styled.div`
     justify-content: center;
     align-items: flex-start;
     height: 100%;
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 `
 
 export const List = styled.ul`
@@ -79,6 +84,7 @@ export const TextContainer = styled.div`
     padding: 0.5em;
     `
 export const IconContainer = styled.div`
+    margin-left: 0.5em;
     align-self: center;
     justify-self: flex-end;
     font-size: 20px;

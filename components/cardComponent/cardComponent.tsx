@@ -5,11 +5,12 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import * as fillHeart from '@fortawesome/free-solid-svg-icons'
 import  { Characters }  from '../../models/characters'
 import Router from 'next/router'
-import { SearchContext } from "../../context/searchContext";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+import { toggleFav, selectCharacterState } from "../../redux/reducers";
 
 const CardComponent:React.FC<{charData: Characters[]}> = ({charData}):JSX.Element => {
-    const { handleFav, listFav } = React.useContext(SearchContext)
-
+    const dispatch = useAppDispatch()
+    const charState = useAppSelector(selectCharacterState)
     const handleDetail = (id: number) => {
         Router.push('/' + id)
     }
@@ -27,7 +28,7 @@ const CardComponent:React.FC<{charData: Characters[]}> = ({charData}):JSX.Elemen
                             <NameText>{name}</NameText>
                             <SpeciesText>{species}</SpeciesText>
                             <IconContainer>
-                                <FontAwesomeIcon onClick={() => handleFav(id)} icon={listFav.includes(el) ? fillHeart.faHeart : faHeart}/>
+                                <FontAwesomeIcon onClick={() => dispatch(toggleFav(el))} icon={charState.favChar.includes(el) ? fillHeart.faHeart : faHeart}/>
                             </IconContainer>
                         </TextContainer>
                         <Button onClick={() => handleDetail(id)}>Ver detalle</Button>
