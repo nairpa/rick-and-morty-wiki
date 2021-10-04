@@ -3,11 +3,15 @@ import { ApolloProvider } from '@apollo/client'
 import client from '../apollo/client'
 import { store  } from '../redux/store'
 import { Provider } from 'react-redux'
+import { SidebarComponent } from '../components/sidebarComponent/sidebarComponent'
+import NavbarComponent from '../components/navbarComponet/navbarComponent'
 
 function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
         <Provider store={store}>
+          <NavbarComponent />
+          <SidebarComponent />
           <Component {...pageProps} />
         </Provider>
     </ApolloProvider>

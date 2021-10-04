@@ -1,18 +1,22 @@
 import { Character } from '../../models/character'
-import { Nav, Image, Name, ImageContainer, Button, Container, TextContainer, Text, List, Item, IconContainer } from './detailCardStyles'
+import { Nav, Image, Name, ImageContainer, Button, Container, TextContainer, Text, List, Item, IconContainer, Wrapper } from './detailCardStyles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as fillHeart from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks'
 import { selectCharacterState, toggleFav } from '../../redux/reducers'
-
+import  Router from 'next/router'
 export const DetailCardComponent:React.FC<{data : Character}> = ({data}):JSX.Element => {
     const { name, id, image, species } = data
     const dispatch = useAppDispatch()
     const charState = useAppSelector(selectCharacterState)
     
+    const handleClick = () => {
+        Router.push('/')
+    }
+
     return (
-        <>
+        <Wrapper>
         {data ? 
             <>
             <Nav>
@@ -23,7 +27,7 @@ export const DetailCardComponent:React.FC<{data : Character}> = ({data}):JSX.Ele
                             <FontAwesomeIcon onClick={() => dispatch(toggleFav({name, id, image, species}))} icon={charState.favChar.filter(el => el.id === data.id).length ? fillHeart.faHeart : faHeart}/>
                         </IconContainer>
                     </div>
-                    <Button onClick={() => window.history.back()}>Volver</Button>
+                    <Button onClick={() => handleClick()}>Volver</Button>
                 </Container>
                 <ImageContainer>
                     <Image src={data.image} alt={data.name}></Image>
@@ -43,6 +47,6 @@ export const DetailCardComponent:React.FC<{data : Character}> = ({data}):JSX.Ele
                 </div>
             </TextContainer>
             </> : <h1>loading</h1> }           
-        </>
+        </Wrapper>
     )
 }

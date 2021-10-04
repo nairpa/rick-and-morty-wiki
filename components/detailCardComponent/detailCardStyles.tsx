@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export const Wrapper = styled.div`
+    padding-left: 200px;
+    padding-top: 75px;
+`
+
 export const Name = styled.h1`
     font-family: 'Oswald';
     font-size: 30px;

@@ -1,0 +1,30 @@
+import * as React from "react";
+import { Button, Container, NameText, EpisodeText, TextContainer, DateText } from "./locationStyles";
+import  { Locations }  from '../../../models/locations'
+import Router from 'next/router'
+
+const LocationCard:React.FC<{locationData: Locations[]}> = ({locationData}):JSX.Element => {
+    const handleDetail = (id: number) => {
+        Router.push('/location/' + id)
+    }
+
+    return (
+        <> 
+            {locationData ? locationData.map((el: Locations):JSX.Element => { 
+                const { name, id, dimension, type } = el
+                return (
+                    <Container key={id}>
+                        <TextContainer >
+                            <NameText>{name}</NameText>
+                            <EpisodeText>{dimension}</EpisodeText>
+                            <DateText>{type}</DateText>
+                        </TextContainer>
+                        <Button onClick={() => handleDetail(id)}>Ver detalle</Button>
+                    </Container>
+                )
+            }) : <h1>Loading</h1>}
+        </>   
+    )
+}
+
+export default LocationCard

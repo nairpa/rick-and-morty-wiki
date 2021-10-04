@@ -8,6 +8,7 @@ export const PageContainer = styled.ul`
     justify-content: center;
     padding: 1em;
     bottom: 0;
+    padding-left: 200px;
 `
 export const PageIndexContainer = styled.li`
     border-radius: 50%;

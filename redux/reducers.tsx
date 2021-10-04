@@ -2,9 +2,13 @@ import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
 import { Characters } from "../models/characters";
 import { RootState } from '../redux/store';
 import { Pages } from '../models/pages'
+import { Episodes } from "../models/episodes";
+import { Locations } from '../models/locations';
 
 interface CharacterState {
+    locations: Locations[],
     characters: Characters[],
+    episodes: Episodes[],
     favChar: Characters[],
     pagination: Pages,
     searchValue: string,
@@ -13,7 +17,9 @@ interface CharacterState {
 export const characterSlice = createSlice({
     name: 'character',
     initialState: { 
+        episodes: [],
         characters: [],
+        locations: [],
         favChar: [], 
         pagination: {
             currentPage: 0, 
@@ -27,6 +33,12 @@ export const characterSlice = createSlice({
         getCharacters: (state, action: PayloadAction<Characters[]>) => {
             state.characters = action.payload
         },
+        getEpisodes: (state, action: PayloadAction<Episodes[]>) => {
+            state.episodes = action.payload
+        },
+        getLocations: (state, action: PayloadAction<Locations[]>) => {
+            state.locations = action.payload
+        },
         setPagination: (state, action: PayloadAction<Pages>) => {
             state.pagination = {
                 ...state.pagination, 
@@ -34,6 +46,14 @@ export const characterSlice = createSlice({
                 nextPage: action.payload.nextPage, 
                 prevPage: action.payload.prevPage, 
                 totalPage: action.payload.totalPage
+            }
+        },
+        clearPagination: (state) => {
+            state.pagination = { 
+                currentPage: 0,
+                nextPage: 0,
+                prevPage: 0,
+                totalPage: 0
             }
         },
         setSearchValue: (state, action: PayloadAction<string>) => {
@@ -50,6 +70,14 @@ export const characterSlice = createSlice({
     }
 })
 
-export const { toggleFav, getCharacters,setPagination, setSearchValue } = characterSlice.actions
+export const { 
+    toggleFav, 
+    getCharacters,
+    setPagination, 
+    setSearchValue, 
+    getEpisodes, 
+    clearPagination, 
+    getLocations 
+} = characterSlice.actions
 export const selectCharacterState = (state: RootState) => state.character
 export default characterSlice.reducer

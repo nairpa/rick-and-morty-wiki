@@ -7,5 +7,6 @@ export const CardContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    padding-left: 200px;
 `
     

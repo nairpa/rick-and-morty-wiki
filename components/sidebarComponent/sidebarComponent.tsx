@@ -1,8 +1,10 @@
 import Link from 'next/link'
+import { Aside } from './sidebarStyles'
+
 export const SidebarComponent:React.FC = ():JSX.Element => {
     return(
         <>
-            <aside>
+            <Aside>
                 <Link href='/dashboard'>
                     <a>Dashboard</a>
                 </Link>
@@ -12,10 +14,10 @@ export const SidebarComponent:React.FC = ():JSX.Element => {
                 <Link href='/episodes'>
                     <a>Episodios</a>
                 </Link>
-                <Link href='/characters'>
+                <Link href='/locations'>
                     <a>Lugares</a>
                 </Link>
-            </aside>
+            </Aside>
         </>
     )
 }

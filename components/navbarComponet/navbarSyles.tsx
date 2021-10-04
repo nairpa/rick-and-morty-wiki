@@ -37,6 +37,7 @@ export const Button = styled.button`
 `
 
 export const Navbar = styled.nav`
+    z-index: 100;
     top: 0;
     width: 100%;
     padding: 0.5em;

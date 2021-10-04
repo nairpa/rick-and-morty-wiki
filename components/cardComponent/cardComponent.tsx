@@ -9,12 +9,18 @@ import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { toggleFav, selectCharacterState } from "../../redux/reducers";
 
 const CardComponent:React.FC<{charData: Characters[]}> = ({charData}):JSX.Element => {
+    
     const dispatch = useAppDispatch()
     const charState = useAppSelector(selectCharacterState)
-    const handleDetail = (id: number) => {
-        Router.push('/' + id)
-    }
 
+    React.useEffect(() => {
+    
+    }, [charState])
+
+    const handleDetail = (id: number) => {
+        Router.push('/character/' + id)
+    }
+    console.log(charState.favChar)
     return (
         <> 
             {charData.map((el: Characters):JSX.Element => { 
@@ -28,7 +34,7 @@ const CardComponent:React.FC<{charData: Characters[]}> = ({charData}):JSX.Elemen
                             <NameText>{name}</NameText>
                             <SpeciesText>{species}</SpeciesText>
                             <IconContainer>
-                                <FontAwesomeIcon onClick={() => dispatch(toggleFav(el))} icon={charState.favChar.includes(el) ? fillHeart.faHeart : faHeart}/>
+                                <FontAwesomeIcon onClick={() => dispatch(toggleFav(el))} icon={charState.favChar.filter(e => e.id === el.id).length ? fillHeart.faHeart : faHeart}/>
                             </IconContainer>
                         </TextContainer>
                         <Button onClick={() => handleDetail(id)}>Ver detalle</Button>
