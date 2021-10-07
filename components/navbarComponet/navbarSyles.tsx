@@ -21,19 +21,12 @@ export const Input = styled.input`
     border-radius: 4px 0px 0px 4px;
  `
 
-export const Button = styled.button`
+export const Span = styled.span`
     padding: 0.5em;
-    width: 20%;
     border: 1px solid #168b44;
     border-radius: 0px 4px 4px 0px;
     color: #FFFFFF;
     background-color: #168b44;
-    cursor: pointer;
-    :hover {
-        background: #FFFFFF;
-        color: #168b44;
-        border-left: 1px solid #ffffff;
-    }
 `
 
 export const Navbar = styled.nav`
@@ -53,4 +46,7 @@ export const Navbar = styled.nav`
 
 export const SearchContainer = styled.div`
     margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
 `

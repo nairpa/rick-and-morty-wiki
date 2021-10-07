@@ -3,12 +3,11 @@ import characterReducer from './reducers'
 import { loadState, saveState } from "../utils/localStorageManagment"
 
 const persistedState = loadState()
-
 export const store = configureStore({
     reducer: {
         character: characterReducer,
-    }, 
-    preloadedState: persistedState
+    },
+    preloadedState: persistedState,
 })
 
 store.subscribe(() => {

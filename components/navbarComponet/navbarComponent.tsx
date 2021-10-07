@@ -1,7 +1,7 @@
 import React from 'react'
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Button, Image, ImageContainer, Input, Navbar, SearchContainer } from "./navbarSyles"
+import { Span, Image, ImageContainer, Input, Navbar, SearchContainer } from "./navbarSyles"
 import { useAppDispatch } from '../../hooks/reduxHooks'
 import { setSearchValue } from '../../redux/reducers'
 
@@ -22,7 +22,7 @@ const NavbarComponent:React.FC = ():JSX.Element => {
                 </ImageContainer>
                 <SearchContainer>
                     <Input onChange={(e) => handleInput(e)} type='search'/>
-                    <Button> <FontAwesomeIcon icon={faSearch}/> </Button>
+                    <Span> <FontAwesomeIcon icon={faSearch}/> </Span>
                 </SearchContainer>
             </Navbar>
         </header>

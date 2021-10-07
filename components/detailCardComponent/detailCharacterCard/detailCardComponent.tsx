@@ -1,10 +1,10 @@
-import { Character } from '../../models/character'
+import { Character } from '../../../models/character'
 import { Nav, Image, Name, ImageContainer, Button, Container, TextContainer, Text, List, Item, IconContainer, Wrapper } from './detailCardStyles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as fillHeart from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks'
-import { selectCharacterState, toggleFav } from '../../redux/reducers'
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
+import { selectCharacterState, toggleFav } from '../../../redux/reducers'
 import  Router from 'next/router'
 export const DetailCardComponent:React.FC<{data : Character}> = ({data}):JSX.Element => {
     const { name, id, image, species } = data

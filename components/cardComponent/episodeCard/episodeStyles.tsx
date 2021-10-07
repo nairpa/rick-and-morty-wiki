@@ -18,6 +18,12 @@ export const Container = styled.div`
     margin: 1em;
     justify-content: space-between;
     transition: 0.3s all ease-in-out;
+
+    @media(max-width: 800px) {
+        {
+            flex-direction: column;
+        }
+    }
 `
 
 export const NameText = styled.p`
@@ -58,10 +64,22 @@ export const Button = styled.button`
         background: #FFFFFF;
         color: #168b44;
     }
+    @media(max-width: 800px) {
+        {
+            align-self: center;
+            margin-top: 1em;
+        }
+    }
 `
 
 export const TextContainer = styled.div`
     display: grid;
     grid-template-columns: 300px 200px;
     grid-template-rows: auto auto;
+
+    @media(max-width: 800px) {
+        {
+            grid-template-columns: 100px 100px;
+        }
+    }
 `
