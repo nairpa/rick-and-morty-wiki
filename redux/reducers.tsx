@@ -10,6 +10,7 @@ interface CharacterState {
     characters: Characters[],
     episodes: Episodes[],
     favChar: Characters[],
+    currentFav: Characters[],
     pagination: Pages,
     searchValue: string,
 }
@@ -20,11 +21,14 @@ export const characterSlice = createSlice({
         episodes: [],
         characters: [],
         locations: [],
-        favChar: [], 
+        favChar: [],
+        currentFav: [], 
         pagination: {
             currentPage: 0, 
             nextPage: 0, 
             prevPage: 0, 
+            offset: 0,
+            pageLimit: 10,
             totalPage: 0
         }, 
         searchValue: '' 
@@ -48,12 +52,23 @@ export const characterSlice = createSlice({
                 totalPage: action.payload.totalPage
             }
         },
+        setOffset: (state) => {
+            state.pagination = {
+                ...state.pagination,
+                offset: (state.pagination.currentPage - 1) * state.pagination.pageLimit,
+            }
+        },
+        setCurrentFav: (state) => {
+            state.currentFav = state.favChar.slice(state.pagination.offset, state.pagination.offset + state.pagination.pageLimit)
+        },
         clearPagination: (state) => {
             state.pagination = { 
                 currentPage: 0,
                 nextPage: 0,
                 prevPage: 0,
-                totalPage: 0
+                totalPage: 0,
+                pageLimit: 10,
+                offset: 0,
             }
         },
         setSearchValue: (state, action: PayloadAction<string>) => {
@@ -77,7 +92,9 @@ export const {
     setSearchValue, 
     getEpisodes, 
     clearPagination, 
-    getLocations 
+    getLocations,
+    setOffset,
+    setCurrentFav, 
 } = characterSlice.actions
 export const selectCharacterState = (state: RootState) => state.character
 export default characterSlice.reducer

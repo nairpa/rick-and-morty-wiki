@@ -5,14 +5,14 @@ import * as fillHeart from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
 import { selectCharacterState, toggleFav } from '../../../redux/reducers'
-import  Router from 'next/router'
+
 export const DetailCardComponent:React.FC<{data : Character}> = ({data}):JSX.Element => {
     const { name, id, image, species } = data
     const dispatch = useAppDispatch()
     const charState = useAppSelector(selectCharacterState)
     
     const handleClick = () => {
-        Router.push('/')
+        window.history.back()
     }
 
     return (

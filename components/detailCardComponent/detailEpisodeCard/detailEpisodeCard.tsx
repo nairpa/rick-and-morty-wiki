@@ -1,10 +1,9 @@
 import { Episode } from '../../../models/episode'
 import { Nav, Name, Button, Container, TextContainer, Text, List, Item, Wrapper } from './detailEpisodeStyles'
-import  Router from 'next/router'
 
 export const DetailEpisodeCard:React.FC<{data : Episode}> = ({data}):JSX.Element => {   
     const handleClick = () => {
-        Router.push('/')
+        window.history.back()
     }
 
     return (

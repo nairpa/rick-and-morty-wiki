@@ -1,10 +1,9 @@
 import { Location } from '../../../models/location'
 import { Nav, Name, Button, Container, TextContainer, Text, List, Item, Wrapper } from './detailLocationStyles'
-import  Router from 'next/router'
 
 export const DetailLocationCard:React.FC<{data : Location}> = ({data}):JSX.Element => {   
     const handleClick = () => {
-        Router.push('/')
+        window.history.back()    
     }
 
     return (
