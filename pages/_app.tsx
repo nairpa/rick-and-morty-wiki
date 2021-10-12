@@ -10,7 +10,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
         <Provider store={store}>
-          <NavbarComponent />
           <SidebarComponent />
           <Component {...pageProps} />
         </Provider>

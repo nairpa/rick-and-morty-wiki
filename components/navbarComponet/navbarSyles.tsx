@@ -1,19 +1,5 @@
 import styled from 'styled-components'
 
-export const Image = styled.img`
-    width: 100%;
-    object-fit: contain;
-`
-
-export const ImageContainer = styled.div`
-    left: 0;
-    top: 0;
-    position: relative;
-    width: 200px;
-    height: fit;
-    overflow: hidden;
-`
-
 export const Input = styled.input`
     width: 80%;
     padding: 0.5em;
@@ -29,24 +15,34 @@ export const Span = styled.span`
     background-color: #168b44;
 `
 
-export const Navbar = styled.nav`
-    z-index: 100;
-    top: 0;
+export const Container = styled.div`
     width: 100%;
     padding: 0.5em;
-    position: fixed;
-    background: #FFFFFF;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #168b44;
     min-width: 300px;
+    padding-left: 250px;   
+    
+    @media(max-width: 580px) {
+        padding-top: 100px;
+        padding-bottom: 0;
+        padding-left: 0;
+    }
 `
 
 export const SearchContainer = styled.div`
-    margin-left: auto;
     display: flex;
+    padding: 0.5em;
+    width: 50%;
+    align-self: center;
+    justify-self: center;
     flex-direction: row;
     align-content: center;
+
+    @media(max-width: 580px) {
+        padding-left: 0.5em;
+        padding-bottom: 0;
+        width: 60%;
+    }
 `

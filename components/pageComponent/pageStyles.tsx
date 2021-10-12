@@ -8,7 +8,10 @@ export const PageContainer = styled.ul`
     justify-content: center;
     padding: 1em;
     bottom: 0;
-    padding-left: 200px;
+    padding-left: 250px;
+    @media(max-width: 580px) {
+        padding-left: 0;
+    }
 `
 export const PageIndexContainer = styled.li`
     border-radius: 50%;

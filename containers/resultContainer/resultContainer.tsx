@@ -6,6 +6,7 @@ import { selectCharacterState, setPagination} from "../../redux/reducers";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import EpisodeCard from "../../components/cardComponent/episodeCard/episodeCard";
 import LocationCard from "../../components/cardComponent/locationCard/locationCard";
+import NavbarComponent from "../../components/navbarComponet/navbarComponent";
 
 const ResultContainer:React.FC<{type?}> = ({type}):JSX.Element => {
     const characters = useAppSelector(selectCharacterState)
@@ -19,6 +20,7 @@ const ResultContainer:React.FC<{type?}> = ({type}):JSX.Element => {
     console.log(characters.locations)
     return (
         <>
+            <NavbarComponent />
             <CardContainer>
                 { type == 'characters' ? <CardComponent charData={characters.characters}/> : type == 'episodes' ? <EpisodeCard episodeData={characters.episodes}/> : <LocationCard locationData={characters.locations} />}     
             </CardContainer>

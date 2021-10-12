@@ -7,6 +7,9 @@ export const CardContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    padding-left: 200px;
+    padding-left: 250px;
+    @media(max-width: 580px) {
+        padding-left: 0;
+    }
 `
     
