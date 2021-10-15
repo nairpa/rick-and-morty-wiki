@@ -5,6 +5,7 @@ import * as fillHeart from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
 import { selectCharacterState, toggleFav } from '../../../redux/reducers'
+import ReactLoading from 'react-loading'
 
 export const DetailCardComponent:React.FC<{data : Character}> = ({data}):JSX.Element => {
     const { name, id, image, species } = data
@@ -46,7 +47,7 @@ export const DetailCardComponent:React.FC<{data : Character}> = ({data}):JSX.Ele
                 </List>
                 </div>
             </TextContainer>
-            </> : <h1>loading</h1> }           
+            </> : <ReactLoading type={'bars'} color={'#168b44'} height={100} width={100}/> }           
         </Wrapper>
     )
 }

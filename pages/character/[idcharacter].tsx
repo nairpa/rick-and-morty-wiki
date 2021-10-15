@@ -3,6 +3,8 @@ import React from 'react'
 import { GET_ID } from '../../apollo/queries/getById'
 import { useRouter } from 'next/router'
 import { DetailCardComponent } from '../../components/detailCardComponent/detailCharacterCard/detailCardComponent'
+import ReactLoading from 'react-loading'
+import { CardContainer } from '../../containers/resultContainer/resultStyles'
 
 export default function CharacterDetail():JSX.Element {
     const router = useRouter()
@@ -13,7 +15,7 @@ export default function CharacterDetail():JSX.Element {
 
     return (
         <>
-            {loading ? <h1>loading</h1> : <DetailCardComponent data={data.character} />}
+            {loading ? <CardContainer><ReactLoading type={'bars'} color={'#168b44'} height={100} width={100}/></CardContainer>: <DetailCardComponent data={data.character} />}
         </>
     )
 }   

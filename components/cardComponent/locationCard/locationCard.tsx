@@ -2,6 +2,8 @@ import * as React from "react";
 import { Button, Container, NameText, EpisodeText, TextContainer, DateText } from "./locationStyles";
 import  { Locations }  from '../../../models/locations'
 import Router from 'next/router'
+import { CardContainer } from "../../../containers/resultContainer/resultStyles";
+import ReactLoading from 'react-loading';
 
 const LocationCard:React.FC<{locationData: Locations[]}> = ({locationData}):JSX.Element => {
     const handleDetail = (id: number) => {
@@ -22,7 +24,7 @@ const LocationCard:React.FC<{locationData: Locations[]}> = ({locationData}):JSX.
                         <Button onClick={() => handleDetail(id)}>Ver detalle</Button>
                     </Container>
                 )
-            }) : <h1>Loading</h1>}
+            }) : <CardContainer><ReactLoading type={'bars'} color={'#168b44'} height={100} width={100}/></CardContainer>}
         </>   
     )
 }

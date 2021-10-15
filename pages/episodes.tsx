@@ -4,8 +4,12 @@ import { useQuery } from "@apollo/client";
 import { GET_EPISODES } from "../apollo/queries/episodes";
 import { selectCharacterState, setPagination, getEpisodes, clearPagination } from "../redux/reducers";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
+import { ErrorComponent } from "../components/errorComponent/errorComponent";
+import ReactLoading from 'react-loading';
+import { CardContainer } from "../containers/resultContainer/resultStyles";
+import NavbarComponent from "../components/navbarComponet/navbarComponent";
 
-export default function Characters() {
+export default function Episodes() {
     const episodes = useAppSelector(selectCharacterState)
     const { loading, error, data } = useQuery(GET_EPISODES(episodes.pagination.currentPage, `episodes`, episodes.searchValue))
     const dispatch = useAppDispatch()
@@ -23,13 +27,23 @@ export default function Characters() {
         }
     }, [data])
 
-    if(!loading) {
+    if(!error && !loading) {
         type = Object.keys(data)[0]
     }
-    
+
     return (
         <>
-            {loading ? <h1>Loading</h1> : <ResultContainer type={type} />}
+            {error ? 
+                <>
+                    <ErrorComponent errorText={'No episodes found by that name'} />
+                    <NavbarComponent />
+                </> : 
+            loading ? 
+                <CardContainer>
+                    <ReactLoading type={'bars'} color={'#168b44'} height={100} width={100}/>
+                </CardContainer> : 
+                <ResultContainer type={type} />
+            }   
         </>
     )
 }

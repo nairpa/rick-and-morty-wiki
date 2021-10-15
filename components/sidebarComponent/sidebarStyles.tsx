@@ -23,11 +23,12 @@ export const Aside = styled.aside<{visible: boolean}>`
 
 export const IconContainer = styled.div`
     display: none;
+    margin-top: 0.2em;
     font-size: 20px;
     color: white;
     z-index: 100;
     padding-left: 0.5em;
-    position: absolute;
+    position: fixed;
     padding: 0.5em;
     border-radius: 10px;
     cursor: pointer;
@@ -44,25 +45,38 @@ export const Image = styled.img`
     z-index: 99;
 `
 
-export const ImageContainer = styled.div`
+export const ImageContainer = styled.div<{visible: boolean}>`
     left: 0;
     top: 0;
-    position: relative;
+    margin-top: 0.2em;
+    position: fixed;
     width: 200px;
     height: fit;
     z-index: 100;
     overflow: hidden;
     margin-left: 30px;
+    display: block;
+    @media(max-width: 580px) {
+        display: none;
+    }
 `
 
-export const Container = styled.div`
+export const Container = styled.div<{visible: boolean}>`
+    top: 0;
     margin-top: 0.2em;
-    display: flex;
-    width: fit-content;
+    display: block;
+    width: 50px;
+    height: 60px;
     padding: 0.2em;
     z-index: 100;
     background-color: #168b44;
     align-items: center;
     border-radius: 0px 10px 10px 0px;
     position: fixed;
+    @media(max-width: 540px) {
+        width: 100%;
+        margin-top: 0;
+        border-radius: 0;
+        border-bottom: 1px solid #ffffff;
+    }
     `

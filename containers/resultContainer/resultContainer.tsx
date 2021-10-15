@@ -7,20 +7,20 @@ import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import EpisodeCard from "../../components/cardComponent/episodeCard/episodeCard";
 import LocationCard from "../../components/cardComponent/locationCard/locationCard";
 import NavbarComponent from "../../components/navbarComponet/navbarComponent";
+import { TitleComponent } from "../../components/titleComponent/titleComponent";
 
 const ResultContainer:React.FC<{type?}> = ({type}):JSX.Element => {
     const characters = useAppSelector(selectCharacterState)
-    //const { loading, error, data } = useQuery(GET_CHARACTERS(characters.pagination.currentPage, `characters`, characters.searchValue))
     const dispatch = useAppDispatch()
 
     const handleClick = (cPage:number, nPage:number, pPage:number): void => {
         dispatch(setPagination({...characters.pagination, currentPage: cPage, nextPage: nPage, prevPage: pPage }))
     }
 
-    console.log(characters.locations)
     return (
         <>
             <NavbarComponent />
+            <TitleComponent title={type}/>
             <CardContainer>
                 { type == 'characters' ? <CardComponent charData={characters.characters}/> : type == 'episodes' ? <EpisodeCard episodeData={characters.episodes}/> : <LocationCard locationData={characters.locations} />}     
             </CardContainer>

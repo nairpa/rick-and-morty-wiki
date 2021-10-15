@@ -1,5 +1,6 @@
 import { Location } from '../../../models/location'
 import { Nav, Name, Button, Container, TextContainer, Text, List, Item, Wrapper } from './detailLocationStyles'
+import ReactLoading from 'react-loading'
 
 export const DetailLocationCard:React.FC<{data : Location}> = ({data}):JSX.Element => {   
     const handleClick = () => {
@@ -30,7 +31,7 @@ export const DetailLocationCard:React.FC<{data : Location}> = ({data}):JSX.Eleme
                 </List>
                 </div>
             </TextContainer>
-            </> : <h1>loading</h1> }           
+            </> : <ReactLoading type={'bars'} color={'#168b44'} height={100} width={100}/> }           
         </Wrapper>
     )
 }

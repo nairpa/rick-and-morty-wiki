@@ -1,5 +1,6 @@
 import { Episode } from '../../../models/episode'
 import { Nav, Name, Button, Container, TextContainer, Text, List, Item, Wrapper } from './detailEpisodeStyles'
+import ReactLoading from 'react-loading'
 
 export const DetailEpisodeCard:React.FC<{data : Episode}> = ({data}):JSX.Element => {   
     const handleClick = () => {
@@ -30,7 +31,7 @@ export const DetailEpisodeCard:React.FC<{data : Episode}> = ({data}):JSX.Element
                 </List>
                 </div>
             </TextContainer>
-            </> : <h1>loading</h1> }           
+            </> : <ReactLoading type={'bars'} color={'#168b44'} height={100} width={100}/> }           
         </Wrapper>
     )
 }

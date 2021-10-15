@@ -20,7 +20,7 @@ const CardComponent:React.FC<{charData: Characters[]}> = ({charData}):JSX.Elemen
     const handleDetail = (id: number) => {
         Router.push('/character/' + id)
     }
-    console.log(charState.favChar)
+    
     return (
         <> 
             {charData.map((el: Characters):JSX.Element => { 

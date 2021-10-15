@@ -1,8 +1,11 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-    padding-left: 200px;
-    padding-top: 75px;
+    padding-left: 250px;
+    @media(max-width: 580px) {
+        padding-left: 0;
+        margin-top: 3.7em;
+    }
 `
 
 export const Name = styled.h1`

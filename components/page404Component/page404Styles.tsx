@@ -16,6 +16,10 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-left: 250px;
+    @media(max-width: 540px) {
+        padding-left: 0;
+    }
 `
 
 export const Button = styled.button`

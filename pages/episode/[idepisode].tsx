@@ -3,6 +3,8 @@ import React from 'react'
 import { GET_ID } from '../../apollo/queries/getEpisodeId'
 import { useRouter } from 'next/router'
 import { DetailEpisodeCard } from '../../components/detailCardComponent/detailEpisodeCard/detailEpisodeCard'
+import { CardContainer } from '../../containers/resultContainer/resultStyles'
+import ReactLoading from 'react-loading'
 
 export default function CharacterDetail():JSX.Element {
     const router = useRouter()
@@ -13,7 +15,7 @@ export default function CharacterDetail():JSX.Element {
     console.log(data)
     return (
         <>
-            {loading ? <h1>loading</h1> : <DetailEpisodeCard data={data.episode} />}
+            {loading ? <CardContainer><ReactLoading type={'bars'} color={'#168b44'} height={100} width={100}/></CardContainer> : <DetailEpisodeCard data={data.episode} />}
         </>
     )
 }   

@@ -4,7 +4,6 @@ import client from '../apollo/client'
 import { store  } from '../redux/store'
 import { Provider } from 'react-redux'
 import { SidebarComponent } from '../components/sidebarComponent/sidebarComponent'
-import NavbarComponent from '../components/navbarComponet/navbarComponent'
 
 function MyApp({ Component, pageProps }) {
   return (

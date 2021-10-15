@@ -4,6 +4,10 @@ import { useQuery } from "@apollo/client";
 import { GET_CHARACTERS } from "../apollo/queries/characters";
 import { selectCharacterState, getCharacters, setPagination, clearPagination } from "../redux/reducers";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
+import { ErrorComponent } from "../components/errorComponent/errorComponent";
+import { CardContainer } from "../containers/resultContainer/resultStyles";
+import ReactLoading from 'react-loading';
+import NavbarComponent from "../components/navbarComponet/navbarComponent";
 
 export default function Characters() {
     const characters = useAppSelector(selectCharacterState)
@@ -23,13 +27,23 @@ export default function Characters() {
         }
     }, [data])
 
-    if(!loading) {
+    if(!error && !loading) {
         type = Object.keys(data)[0]
     }
 
     return (
         <>
-            {loading ? <h1>Loading</h1> : <ResultContainer type={type} />}
+            {error ? 
+                <>
+                    <ErrorComponent errorText={'No characters found by that name'} />
+                    <NavbarComponent /> 
+                </> : 
+            loading ? 
+                <CardContainer>
+                    <ReactLoading type={'bars'} color={'#168b44'} height={100} width={100}/>
+                </CardContainer> :
+            <ResultContainer type={type} />
+            }
         </>
     )
 }

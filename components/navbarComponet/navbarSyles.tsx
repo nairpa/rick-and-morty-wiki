@@ -22,7 +22,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     min-width: 300px;
-    padding-left: 250px;   
+    padding-left: 240px;   
     
     @media(max-width: 580px) {
         padding-top: 100px;
@@ -32,14 +32,10 @@ export const Container = styled.div`
 `
 
 export const SearchContainer = styled.div`
+    padding-left: 4em;   
     display: flex;
-    padding: 0.5em;
     width: 50%;
-    align-self: center;
-    justify-self: center;
     flex-direction: row;
-    align-content: center;
-
     @media(max-width: 580px) {
         padding-left: 0.5em;
         padding-bottom: 0;

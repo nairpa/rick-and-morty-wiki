@@ -7,6 +7,8 @@ import { toggleFav, setPagination, clearPagination, selectCharacterState, setOff
 import { CardContainer } from "../../containers/resultContainer/resultStyles";
 import PageComponent from "../pageComponent/pageComponent";
 import { useEffect } from "react";
+import { TitleComponent } from "../titleComponent/titleComponent";
+import { ErrorComponent } from "../errorComponent/errorComponent";
 
 export const DashboardComponent:React.FC = ():JSX.Element => {
     const favChar = useAppSelector(selectCharacterState)
@@ -30,9 +32,9 @@ export const DashboardComponent:React.FC = ():JSX.Element => {
         dispatch(setCurrentFav())
     }
 
-    console.log(favChar.currentFav)
     return (
         <>
+        {favChar.favChar.length ? <TitleComponent title={'Favorites'}/> : <ErrorComponent errorText={"You haven't added any favorite characters, start adding them"}/>}
         <CardContainer>
             {favChar.favChar.length ? favChar.currentFav.map(el => {
                 return (
@@ -49,7 +51,7 @@ export const DashboardComponent:React.FC = ():JSX.Element => {
                         </TextContainer>
                     </Container>
                 )
-            }) : <h1>Favorite characters not found</h1>}
+            }) : null}
         </CardContainer>
         <PageComponent pagination={favChar.pagination} handleClick={handleClick}/>
         </>
